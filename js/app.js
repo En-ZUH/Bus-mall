@@ -103,6 +103,7 @@ function show(event)
     }
   }
 }
+
 /*{
       Bus.all[RightIndex].votes++;
       views++;
