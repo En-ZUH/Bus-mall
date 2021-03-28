@@ -1,0 +1,9 @@
+body{background-image: url(https://pub-static.fotor.com/static/web/site/features/backgrounds/images/Fotor-wood-background-image-3.jpg);}
+
+section{width: 1179px; height: 389px; background-color: #c64756;}
+h1{ color: #c64756; text-align: center; font-size:70px; font-family:'Satisfy', cursive;}
+
+#images-section{max-width :90%; margin: 0 auto; text-align: center;}
+
+img{ border: 5px solid #505752 ; border-radius: 6px; box-shadow: seagreen; padding: 0px; margin: 10px; width: 300px; height: 300px; margin-top: 31px;}
+   
