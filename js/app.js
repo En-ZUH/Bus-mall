@@ -146,12 +146,9 @@ function show(event)
       alert(`you have done ${numVotes} selections`);
       //console.log(Bus.all[i].votes , Bus.all.views);
     }
-    
   }
-
 }
 //______________________________________________________________
-
 
 
 render(); //first views:3
