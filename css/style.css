@@ -7,6 +7,6 @@ h1{ color: #c64756; text-align: center; font-size:70px; font-family:'Satisfy', c
 #images-section{max-width :90%; margin: 0 auto; text-align: center;}
 
 img{ border: 5px solid #505752 ; border-radius: 6px; box-shadow: seagreen; padding: 0px; margin: 10px; width: 300px; height: 300px; margin-top: 31px;}
-li{ background-color:#ebc9cd; font-size: large; color:black;}  
-ul{margin-right: 1448px ;}
+li{ font-size: 22px; color:black;}  
+/*ul{margin-right: 1448px ;}*/
 
