@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
@@ -7,7 +8,8 @@ let Names = ['banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'BusMallIm
 let leftIndex;
 let MiddIndex;
 let RightIndex;
-let views=0;
+//let views=0;
+
 
 
 // eslint-disable-next-line no-unused-vars
@@ -44,82 +46,113 @@ function render()
   MiddIndex= randomNumber(0, Bus.all.length-1);
   RightIndex= randomNumber(0, Bus.all.length-1);
 
-  /* for (let i = 0; i < Bus.all.length; i++) {
-  
-    if( leftIndex === MiddIndex || leftIndex === RightIndex)
-      leftIndex= randomNumber(0, Bus.all.length-1);
-    
-  
-    else if (MiddIndex === leftIndex || MiddIndex === RightIndex) 
-      MiddIndex= randomNumber(0, Bus.all.length-1);
-        
-    else if (RightIndex === leftIndex || RightIndex === MiddIndex) 
-      RightIndex= randomNumber(0, Bus.all.length-1);
-  } */
-  // left-> midd ->right*/
-
-  //    if( leftIndex !== MiddIndex && MiddIndex !=== RightIndex)
-
+ 
   if(leftIndex!==MiddIndex && MiddIndex!==RightIndex && RightIndex!==leftIndex )
   {
     leftPic.src= Bus.all[leftIndex].path;
     leftPic.alt= Bus.all[leftIndex].Name;
     leftPic.title= Bus.all[leftIndex].Name;
+    Bus.all[leftIndex].views++;
     
     
-    console.log(leftIndex);
+    //let a= (Bus.all[leftIndex].views);
 
   
 
     MiddPic.src= Bus.all[MiddIndex].path;
     MiddPic.alt= Bus.all[MiddIndex].Name;
     MiddPic.title= Bus.all[MiddIndex].Name;
-  
-    //console.log(MiddIndex);
+    Bus.all[MiddIndex].views++;
+    
+    //let b= (Bus.all[MiddIndex].views);
+
+    //console.log(Bus.all[MiddIndex]);
 
   
     RightPic.src= Bus.all[RightIndex].path;
     RightPic.alt= Bus.all[RightIndex].Name;
     RightPic.title= Bus.all[RightIndex].Name;
-    leftPic=Bus.all[leftIndex];
-  //console.log(RightIndex);
+    Bus.all[RightIndex].views++;
+
+    /*let c= (Bus.all[RightIndex].views);
+    let o=a+b+c;
+    console.log(o); the first time to insert 3 rand. img*/
+
+    //console.log(views);
   }}
 
+
+
+
+// click______________________________________________________
+
 section.addEventListener('click',show);
+
+let selections=25;
+let firstclick=1;
+let numVotes=0;
 
 function show(event)
-{ render();
-  event.preventDefault();
-  let selections=25;
+{ 
+  //render();
+  //event.preventDefault();
+  
+  if (event.target.id !== 'images-section')
+  { 
+    if (firstclick < selections)
+    { firstclick++;
+      
 
-  if(event.target.id === 'left-image' || event.target.id === 'middle-image'|| event.target.id === 'Right-image'){
-    for (let i = 0; i < Bus.all.length; i++) { 
-      if (Bus.all[i].name === event.target.title)
+      if(event.target.id === 'left-image' || event.target.id === 'middle-image'|| event.target.id === 'Right-image')
       {
-        Bus.all[i].votes++;
-        views++;
-         
-      }      
+        for (let i = 0; i < Bus.all.length; i++) 
+        { 
+          if (Bus.all[i].Name === event.target.title)
+          {
+            numVotes= Bus.all[i].votes++;
+
+            //console.log(Bus.all[i].name);
+            //views++;
+          }      
+
+        } //render();
+      } render();
     }
+    //_____________________________________________
+    else {
+      if(event.target.id === 'left-image' || event.target.id === 'middle-image'|| event.target.id === 'Right-image')
+      {
+        for (let i = 0; i < Bus.all.length; i++) 
+        { 
+          if (Bus.all[i].Name === event.target.title)
+          {
+            numVotes= Bus.all[i].votes++;}}}
+
+        //________________________________________________________________________resultList      
+
+      let ulEl= document.getElementById('resultList');
+      //let liEl= document.createElement('li');
+      //ulEl.appendChild(liEl);
+
+      for (let i=0; i<Bus.all.length; i++) 
+      {
+        let liEl= document.createElement('li');
+        ulEl.appendChild(liEl);
+        liEl.textContent= `${Bus.all[i].Name} has ${Bus.all[i].votes} votes and ${Bus.all[i].views} views`;
+        
+        //console.log(Bus.all[i].votes , Bus.all.views);
+      }
+      section.removeEventListener('click', show);
+      alert(`you have done ${numVotes} selections`);
+      //console.log(Bus.all[i].votes , Bus.all.views);
+    }
+    
   }
+
 }
-
-/*{
-      Bus.all[RightIndex].votes++;
-      views++;
-    }
-    else if (event.target.id === 'middle-image')
-    {
-      Bus.all[MiddIndex].votes++;
-      view++;
-    }
-    else {Bus.all[leftIndex].votes++;
-      view++;
-
-    }
-  }}*/
+//______________________________________________________________
 
 
-render();
-section.addEventListener('click',show);
+
+render(); //first views:3
 
