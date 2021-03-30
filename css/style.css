@@ -1,6 +1,9 @@
 body{background-color: rgba(247,248,186);}
 header{ background-color:lightslategrey; text-align: center; margin-bottom: 17px; }
 
+/*body{background-image: url(https://pub-static.fotor.com/static/web/site/features/backgrounds/images/Fotor-wood-background-image-3.jpg);}*/
+
+
 h1{ color: #c64756; text-align: center; font-size:30px; font-family:'Satisfy', cursive; font-weight: 300; padding-top: 37px;}
 
 header{ padding:  1px 0px 1px 0px;}
@@ -28,5 +31,11 @@ header{ padding:  1px 0px 1px 0px;}
 #images-section{ margin: 0 auto;}
 
 img{ border: 4px solid #c64756 ; border-radius: 6px; box-shadow: black; padding: 10px; margin: 50px; width: 300px; height: 250px; margin-top: 50px; margin-bottom: 50px;}
+
+
+
+img{ border: 5px solid #505752 ; border-radius: 6px; box-shadow: seagreen; padding: 0px; margin: 10px; width: 300px; height: 300px; margin-top: 31px;}
+li{ font-size: 22px; color:black;}  
+/*ul{margin-right: 1448px ;}*/
 
 

@@ -8,14 +8,15 @@ let Names = ['banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'BusMallIm
 let leftIndex;
 let MiddIndex;
 let RightIndex;
-//let views=0;
+let vote=[];
+let view=[];
 
 
 
 // eslint-disable-next-line no-unused-vars
 function Bus(Name) {
   this.Name = Name;
-  this.path = `assets/${Name}.jpg`;
+  this.path = `assets/${Name }.jpg`;
   this.views = 0;
   this.votes = 0;
   Bus.all.push(this);
@@ -136,6 +137,8 @@ function show(event)
 
       for (let i=0; i<Bus.all.length; i++) 
       {
+        vote.push(Bus.all[i].votes);
+        view.push(Bus.all[i].views);
         let liEl= document.createElement('li');
         ulEl.appendChild(liEl);
         liEl.textContent= `${Bus.all[i].Name} has ${Bus.all[i].votes} votes and ${Bus.all[i].views} views`;
@@ -143,8 +146,13 @@ function show(event)
         //console.log(Bus.all[i].votes , Bus.all[i].views);
       }
       section.removeEventListener('click', show);
+
       alert(`you have done ${Bus.all.votes} selections`);
       //console.log(Bus.all[i].votes , Bus.all[i].views);
+
+      alert(`you have done ${vote} selections`);
+      console.log(`${vote} votes , ${view} views`);
+      chartRender();
     }
   }
 }
@@ -170,3 +178,34 @@ section.addEventListener('click', notMatch);
 
 render(); //first views:3
 
+//Creat Chart_____________________________________________________
+
+function chartRender(){
+let ctx = document.getElementById('myChart').getContext('2d');
+let chart = new Chart(ctx, { //Object
+    
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: Names, //horizontally
+        datasets: [{
+            label: 'Buss-Mall',
+            backgroundColor: '#c64756',
+            borderColor: 'rgb(255, 99, 132)',
+            data: vote, //column
+        },
+        //we creat anoother obj inside database
+        {          
+          label: 'Buss-Mall',
+          backgroundColor: 'black',
+          borderColor: 'rgb(255, 99, 132)',
+          data: view , // other column
+      
+        } ]
+    },
+
+    
+    options: {}
+});
+}
