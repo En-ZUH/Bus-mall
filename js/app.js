@@ -1,8 +1,11 @@
+/* eslint-disable no-var */
+/* eslint-disable semi */
 /* eslint-disable indent */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 'use strict';
+
 let Names = ['banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'BusMallImages', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can','wine-glass'];
 
 let leftIndex;
@@ -20,9 +23,37 @@ function Bus(Name) {
   this.views = 0;
   this.votes = 0;
   Bus.all.push(this);
+  //settingItem();  ///wrong invoke
 }
 Bus.all=[];
 
+//localStorage______________________________________________________
+
+function settingItem()
+{let data= JSON.stringify(Bus.all); // stringify method from obj to string
+  localStorage.setItem('Bus', data);
+  //console.log(data);
+  
+}
+
+function gettingItems()
+{
+  let asString= localStorage.getItem('Bus');
+  console.log('in string format', asString);
+
+  let asObj= JSON.parse(asString); // parse method from string to obj
+  console.log('im obj format', asObj);
+
+  if (asObj!==null) { //even reset , still persistance
+    Bus.all= asObj;
+    
+  }
+  
+}
+
+
+gettingItems();
+//_____________________________________________________________________
 
 for (let i = 0; i < Names.length; i++) {
   new Bus(Names[i]);
@@ -40,8 +71,9 @@ function randomNumber(min, max)
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
 function render() // to creat random images
-{
+{ 
   leftIndex= randomNumber(0, Bus.all.length-1);
   // console.log(leftIndex);
   MiddIndex= randomNumber(0, Bus.all.length-1);
@@ -49,7 +81,7 @@ function render() // to creat random images
 
  
   if(leftIndex!==MiddIndex && MiddIndex!==RightIndex && RightIndex!==leftIndex )
-  {
+  { 
     leftPic.src= Bus.all[leftIndex].path;
     leftPic.alt= Bus.all[leftIndex].Name;
     leftPic.title= Bus.all[leftIndex].Name;
@@ -80,7 +112,9 @@ function render() // to creat random images
     console.log(o); the first time to insert 3 rand. img*/
 
     //console.log(views);
-  }}
+    
+  }} 
+   
 
 
 
@@ -89,12 +123,12 @@ function render() // to creat random images
 
 section.addEventListener('click',show);
 
-let selections=25;
+let selections=5;
 let firstclick=1;
 let numVotes=0;
 
 function show(event)
-{ 
+{  
   //render();
   //event.preventDefault();
   
@@ -116,8 +150,10 @@ function show(event)
             //views++;
           }      
 
-        } //render();
+        } //render(); 
+        
       } render();
+      
     }
     //_____________________________________________
     else {
@@ -129,14 +165,17 @@ function show(event)
           {
              Bus.all[i].votes++;}}}
 
-        //________________________________________________________________________resultList      
+        //________________________________________________________________________resultList    
+          
+        
 
       let ulEl= document.getElementById('resultList');
       //let liEl= document.createElement('li');
       //ulEl.appendChild(liEl);
+      
 
       for (let i=0; i<Bus.all.length; i++) 
-      {
+      {  
         vote.push(Bus.all[i].votes);
         view.push(Bus.all[i].views);
         let liEl= document.createElement('li');
@@ -144,18 +183,25 @@ function show(event)
         liEl.textContent= `${Bus.all[i].Name} has ${Bus.all[i].votes} votes and ${Bus.all[i].views} views`;
         
         //console.log(Bus.all[i].votes , Bus.all[i].views);
-      }
-      section.removeEventListener('click', show);
+      } 
 
-      alert(`you have done ${Bus.all.votes} selections`);
+
+      section.removeEventListener('click', show);
+      
+      settingItem(); // to get the data
+      
+
+      alert(`you have done ${Bus.all.vote} selections`);
       //console.log(Bus.all[i].votes , Bus.all[i].views);
 
-      alert(`you have done ${vote} selections`);
-      console.log(`${vote} votes , ${view} views`);
+      //alert(`you have done ${vote} selections`);
+      //console.log(`${vote} votes , ${view} views`);
       chartRender();
-    }
+      
+    } 
   }
-}
+}  
+ 
 //Uniqly images_____________________________________________________________
 
 function notMatch(event) {
@@ -178,6 +224,7 @@ function notMatch(event) {
 section.addEventListener('click', notMatch);
 
 render(); //first views:3
+
 
 //Creat Chart_____________________________________________________
 
@@ -210,3 +257,6 @@ let chart = new Chart(ctx, { //Object
     options: {}
 });
 }
+
+gettingItems();
+
