@@ -40,7 +40,7 @@ function randomNumber(min, max)
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function render()
+function render() // to creat random images
 {
   leftIndex= randomNumber(0, Bus.all.length-1);
   // console.log(leftIndex);
@@ -53,7 +53,7 @@ function render()
     leftPic.src= Bus.all[leftIndex].path;
     leftPic.alt= Bus.all[leftIndex].Name;
     leftPic.title= Bus.all[leftIndex].Name;
-    Bus.all[leftIndex].views++;
+    Bus.all[leftIndex].views++; //view#1
     
     
     //let a= (Bus.all[leftIndex].views);
@@ -110,9 +110,9 @@ function show(event)
         { 
           if (Bus.all[i].Name === event.target.title)
           {
-            numVotes= Bus.all[i].votes++;
+             Bus.all[i].votes++;
 
-            //console.log(Bus.all[i].name);
+            //console.log(Bus.all[i].vote);
             //views++;
           }      
 
@@ -127,7 +127,7 @@ function show(event)
         { 
           if (Bus.all[i].Name === event.target.title)
           {
-            numVotes= Bus.all[i].votes++;}}}
+             Bus.all[i].votes++;}}}
 
         //________________________________________________________________________resultList      
 
@@ -143,17 +143,38 @@ function show(event)
         ulEl.appendChild(liEl);
         liEl.textContent= `${Bus.all[i].Name} has ${Bus.all[i].votes} votes and ${Bus.all[i].views} views`;
         
-        //console.log(Bus.all[i].votes , Bus.all.views);
+        //console.log(Bus.all[i].votes , Bus.all[i].views);
       }
       section.removeEventListener('click', show);
+
+      alert(`you have done ${Bus.all.votes} selections`);
+      //console.log(Bus.all[i].votes , Bus.all[i].views);
+
       alert(`you have done ${vote} selections`);
       console.log(`${vote} votes , ${view} views`);
       chartRender();
     }
   }
 }
-//______________________________________________________________
+//Uniqly images_____________________________________________________________
 
+function notMatch(event) {
+  if( firstclick <= selections) //still available to click
+  {
+    if( event.target.id === 'left-image' || event.target.id === 'middle-image' ||event.target.id === 'right-image') //newClick ?= previous one
+       //let newPic =new Buss.all[i-1] || newPic =new Buss.all[i+1];
+    // newPic= event.target.getAttribute('src'); //generate new
+    event.target.id= event.target.getAttribute('src'); //generate new
+
+  }
+  else section.removeEventListener('click', notMatch);
+
+}
+
+
+
+
+section.addEventListener('click', notMatch);
 
 render(); //first views:3
 
