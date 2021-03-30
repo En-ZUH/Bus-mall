@@ -1,10 +1,32 @@
-body{background-image: url(https://pub-static.fotor.com/static/web/site/features/backgrounds/images/Fotor-wood-background-image-3.jpg);}
+body{background-color: rgba(247,248,186);}
+header{ background-color:lightslategrey; text-align: center; margin-bottom: 17px; }
 
-section{width: 1179px; height: 389px; background-color: #c64756;}
-h1{ color: #c64756; text-align: center; font-size:70px; font-family:'Satisfy', cursive;}
+h1{ color: #c64756; text-align: center; font-size:30px; font-family:'Satisfy', cursive; font-weight: 300; padding-top: 37px;}
 
-#images-section{max-width :90%; margin: 0 auto; text-align: center;}
+header{ padding:  1px 0px 1px 0px;}
 
-img{ border: 5px solid #505752 ; border-radius: 6px; box-shadow: seagreen; padding: 0px; margin: 10px; width: 300px; height: 300px; margin-top: 31px;}
-li{ background-color: gray; font-size: large; color:black;}  
-ul{margin-right: 1448px ;}
+#f{list-style: none;}
+.links { font-size: 20px; font-family: cursive; text-decoration: none; font-weight:100; color: #c64756;}
+
+.list{display: inline; margin: 0px 100px 1px -30px; }
+
+#bus{    text-align: center;
+    display: inline;
+    border: 2px solid;
+    padding: 17px 30px 30px 17px;
+    color: lightslategrey;
+    font-family: cursive;
+    font-weight: 100;
+    font-size: 30px;
+    margin: 0px 10px 0px 550px;
+    border-bottom-width: 15px;
+    margin-bottom: 38px;
+    padding-bottom: 15px;
+    border-top-width: 0px;
+    border-right-width: 15px; }
+
+#images-section{ margin: 0 auto;}
+
+img{ border: 4px solid #c64756 ; border-radius: 6px; box-shadow: black; padding: 10px; margin: 50px; width: 300px; height: 250px; margin-top: 50px; margin-bottom: 50px;}
+
+
