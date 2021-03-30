@@ -164,7 +164,8 @@ function notMatch(event) {
     if( event.target.id === 'left-image' || event.target.id === 'middle-image' ||event.target.id === 'right-image') //newClick ?= previous one
        //let newPic =new Buss.all[i-1] || newPic =new Buss.all[i+1];
     // newPic= event.target.getAttribute('src'); //generate new
-    event.target.id= event.target.getAttribute('src'); //generate new
+    //event.target.id= event.target.getAttribute('src'); //generate new
+    render();
 
   }
   else section.removeEventListener('click', notMatch);
