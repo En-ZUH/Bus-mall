@@ -46,7 +46,7 @@ function gettingItems()
 
   if (asObj!==null) { //even reset , still persistance
     Bus.all= asObj;
-    
+    //render();
   }
   
 }
@@ -187,7 +187,6 @@ function show(event)
 
 
       section.removeEventListener('click', show);
-      
       settingItem(); // to get the data
       
 
